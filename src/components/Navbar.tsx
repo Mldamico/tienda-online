@@ -50,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             <Link>Cart</Link>
           </li>
           <li>
-            <Link>Register</Link>
+            <Link to='/register'>Register</Link>
           </li>
           <li>
             <Link>Login</Link>

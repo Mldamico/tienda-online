@@ -7,8 +7,9 @@ import { store } from './store/store';
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    width: 100%;
+    height: 100vh;
   }
+  
 `;
 
 function App() {
