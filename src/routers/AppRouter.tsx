@@ -22,8 +22,8 @@ export const AppRouter: React.FC<AppRouterProps> = ({}) => {
   }, [dispatch, setIsLoggedIn]);
   return (
     <>
-      <Navbar />
       <Router>
+        <Navbar />
         <Switch>
           <Route exact component={ProductsPage} path='/' />
         </Switch>

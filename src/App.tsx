@@ -1,13 +1,21 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { createGlobalStyle } from 'styled-components';
 import { AppRouter } from './routers/AppRouter';
 import { store } from './store/store';
-import './App.css';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    width: 100%;
+  }
+`;
 
 function App() {
   return (
     <Provider store={store}>
       <AppRouter />
+      <GlobalStyle />
     </Provider>
   );
 }
