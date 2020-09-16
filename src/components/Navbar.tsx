@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import firebase from 'firebase';
+import { login, startLogout } from '../store/actions/auth';
+import { useDispatch, useSelector } from 'react-redux';
 const StyledNavbar = styled.div`
   display: flex;
   width: 100%;
@@ -36,6 +39,24 @@ const StyledNavbar = styled.div`
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
+  const dispatch = useDispatch();
+  const { name } = useSelector((state) => state.auth);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user?.uid) {
+        dispatch(login(user.uid, user.displayName));
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, [dispatch, setIsLoggedIn, name]);
+  const handleLogout = () => {
+    dispatch(startLogout());
+    setIsLoggedIn(false);
+  };
   return (
     <StyledNavbar>
       <div>
@@ -49,12 +70,23 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
           <li>
             <Link to='/cart'>Cart</Link>
           </li>
-          <li>
-            <Link to='/register'>Register</Link>
-          </li>
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
+          {isLoggedIn ? (
+            <>
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+              <li>Bienvenido {name} </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to='/register'>Register</Link>
+              </li>
+              <li>
+                <Link to='/login'>Login</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </StyledNavbar>

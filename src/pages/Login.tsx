@@ -1,6 +1,9 @@
 import React from 'react';
 import { useForm } from '../hooks/useForm';
-import { startRegisterWithEmailPasswordName } from '../store/actions/auth';
+import {
+  startLogin,
+  startRegisterWithEmailPasswordName,
+} from '../store/actions/auth';
 import StyledForm from '../styles/StyledForm';
 import { useDispatch } from 'react-redux';
 interface LoginProps {}
@@ -13,8 +16,7 @@ export const Login: React.FC<LoginProps> = ({}) => {
   });
   const onSubmitHandler = (e) => {
     e.preventDefault();
-
-    dispatch(startRegisterWithEmailPasswordName(name, email, password));
+    dispatch(startLogin(email, password));
   };
 
   const { name, email, password } = formValues;
