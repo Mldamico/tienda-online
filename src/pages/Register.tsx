@@ -2,15 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../hooks/useForm';
-const StyledRegister = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 95vh;
-`;
+import { startRegisterWithEmailPasswordName } from '../store/actions/auth';
+import StyledForm from '../styles/StyledForm';
+
 interface RegisterProps {}
-interface UserInterface {}
 
 export const Register: React.FC<RegisterProps> = ({}) => {
   const dispatch = useDispatch();
@@ -22,12 +17,16 @@ export const Register: React.FC<RegisterProps> = ({}) => {
   });
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    if (password !== password2) {
+      return;
+    }
+    dispatch(startRegisterWithEmailPasswordName(name, email, password));
   };
 
   const { name, email, password, password2 } = formValues;
   return (
-    <StyledRegister>
-      <h2>Registrar</h2>
+    <StyledForm>
+      <h2>Create a new account</h2>
       <form onSubmit={onSubmitHandler}>
         <input
           type='text'
@@ -38,9 +37,32 @@ export const Register: React.FC<RegisterProps> = ({}) => {
           onChange={handleInputChange}
         />
 
-        <input />
-        <input />
+        <input
+          type='email'
+          placeholder='Email'
+          name='email'
+          autoComplete='off'
+          value={email}
+          onChange={handleInputChange}
+        />
+        <input
+          type='password'
+          placeholder='Password'
+          name='password'
+          autoComplete='off'
+          value={password}
+          onChange={handleInputChange}
+        />
+        <input
+          type='password'
+          placeholder='Confirm Password'
+          name='password2'
+          autoComplete='off'
+          value={password2}
+          onChange={handleInputChange}
+        />
+        <button>Register</button>
       </form>
-    </StyledRegister>
+    </StyledForm>
   );
 };

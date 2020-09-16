@@ -44,16 +44,16 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
       <div>
         <ul>
           <li>
-            <Link>Products</Link>
+            <Link to='/'>Products</Link>
           </li>
           <li>
-            <Link>Cart</Link>
+            <Link to='/cart'>Cart</Link>
           </li>
           <li>
             <Link to='/register'>Register</Link>
           </li>
           <li>
-            <Link>Login</Link>
+            <Link to='/login'>Login</Link>
           </li>
         </ul>
       </div>
