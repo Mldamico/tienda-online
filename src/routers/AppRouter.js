@@ -8,13 +8,15 @@ import { Navbar } from '../components/Navbar';
 import { Register } from '../pages/Register';
 import styled from 'styled-components';
 import { Login } from '../pages/Login';
+import { PublicRouter } from './PublicRouter';
+import { PrivateRouter } from './PrivateRouter';
+import { Cart } from '../pages/Cart';
 
 const StyledRouterContainer = styled.div`
   height: 100%;
 `;
-interface AppRouterProps {}
 
-export const AppRouter: React.FC<AppRouterProps> = ({}) => {
+export const AppRouter = ({}) => {
   const dispatch = useDispatch();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,8 +38,21 @@ export const AppRouter: React.FC<AppRouterProps> = ({}) => {
         <StyledRouterContainer>
           <Switch>
             <Route exact component={ProductsPage} path='/' />
-            <Route exact component={Register} path='/register' />
-            <Route exact component={Login} path='/login' />
+            <PrivateRouter
+              isAuthenticated={isLoggedIn}
+              component={Cart}
+              path='/cart'
+            />
+            <PublicRouter
+              isAuthenticated={isLoggedIn}
+              component={Register}
+              path='/register'
+            />
+            <PublicRouter
+              isAuthenticated={isLoggedIn}
+              component={Login}
+              path='/login'
+            />
           </Switch>
         </StyledRouterContainer>
       </Router>
