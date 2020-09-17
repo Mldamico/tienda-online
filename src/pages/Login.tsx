@@ -1,15 +1,14 @@
 import React from 'react';
 import { useForm } from '../hooks/useForm';
-import {
-  startLogin,
-  startRegisterWithEmailPasswordName,
-} from '../store/actions/auth';
+import { startLogin } from '../store/actions/auth';
 import StyledForm from '../styles/StyledForm';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 interface LoginProps {}
 
 export const Login: React.FC<LoginProps> = ({}) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [formValues, handleInputChange]: any = useForm({
     email: '',
     password: '',
@@ -17,6 +16,7 @@ export const Login: React.FC<LoginProps> = ({}) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     dispatch(startLogin(email, password));
+    history.push('/');
   };
 
   const { name, email, password } = formValues;

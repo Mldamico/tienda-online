@@ -15,7 +15,20 @@ const StyledRouterContainer = styled.div`
 interface AppRouterProps {}
 
 export const AppRouter: React.FC<AppRouterProps> = ({}) => {
-  
+  const dispatch = useDispatch();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user?.uid) {
+        dispatch(login(user.uid, user.displayName));
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+  }, [dispatch, setIsLoggedIn]);
   return (
     <>
       <Router>

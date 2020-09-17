@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase';
-import { login, startLogout } from '../store/actions/auth';
+import { startLogout } from '../store/actions/auth';
 import { useDispatch, useSelector } from 'react-redux';
 const StyledNavbar = styled.div`
   display: flex;
@@ -42,20 +41,8 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
   const dispatch = useDispatch();
   const { name } = useSelector((state) => state.auth);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user?.uid) {
-        dispatch(login(user.uid, user.displayName));
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    });
-  }, [dispatch, setIsLoggedIn, name]);
   const handleLogout = () => {
     dispatch(startLogout());
-    setIsLoggedIn(false);
   };
   return (
     <StyledNavbar>
@@ -70,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
           <li>
             <Link to='/cart'>Cart</Link>
           </li>
-          {isLoggedIn ? (
+          {name ? (
             <>
               <li>
                 <button onClick={handleLogout}>Logout</button>
