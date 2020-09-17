@@ -33,6 +33,10 @@ const StyledNavbar = styled.div`
       opacity: 0.8;
     }
   }
+
+  .btn {
+    cursor: pointer;
+  }
 `;
 
 interface NavbarProps {}
@@ -54,13 +58,15 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
           <li>
             <Link to='/'>Products</Link>
           </li>
-          <li>
-            <Link to='/cart'>Cart</Link>
-          </li>
+          {name && (
+            <li>
+              <Link to='/cart'>Cart</Link>
+            </li>
+          )}
           {name ? (
             <>
-              <li>
-                <button onClick={handleLogout}>Logout</button>
+              <li className='btn' onClick={handleLogout}>
+                Logout
               </li>
               <li>Bienvenido {name} </li>
             </>
