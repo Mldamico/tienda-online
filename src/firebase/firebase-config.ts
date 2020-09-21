@@ -3,14 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyCnGiMED3oCTr8r3J4tCtzZvRIgYS5WWus',
-  authDomain: 'probando-react-native.firebaseapp.com',
-  databaseURL: 'https://probando-react-native.firebaseio.com',
-  projectId: 'probando-react-native',
-  storageBucket: 'probando-react-native.appspot.com',
-  messagingSenderId: '277925202508',
-  appId: '1:277925202508:web:28c86cb944d496344202e9',
-  measurementId: 'G-3WP62Z05T7',
+  apiKey: 'AIzaSyD0Omz9o0EvRwY2JcB5pNPJVoyZwhPy9M8',
+  authDomain: 'tienda-online-6716c.firebaseapp.com',
+  databaseURL: 'https://tienda-online-6716c.firebaseio.com',
+  projectId: 'tienda-online-6716c',
+  storageBucket: 'tienda-online-6716c.appspot.com',
+  messagingSenderId: '89166692068',
+  appId: '1:89166692068:web:9b10eb2ea0369deed336f1',
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
