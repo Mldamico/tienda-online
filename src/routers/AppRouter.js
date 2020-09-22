@@ -39,7 +39,7 @@ export const AppRouter = ({}) => {
         <StyledRouterContainer>
           <Switch>
             <Route exact component={ProductsPage} path='/' />
-            <Route exact component={ProductDescription} path='/:id' />
+            <Route exact component={ProductDescription} path='/:articulo' />
             <PrivateRouter
               isAuthenticated={isLoggedIn}
               component={Cart}
