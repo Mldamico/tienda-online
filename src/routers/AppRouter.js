@@ -11,6 +11,7 @@ import { Login } from '../pages/Login';
 import { PublicRouter } from './PublicRouter';
 import { PrivateRouter } from './PrivateRouter';
 import { Cart } from '../pages/Cart';
+import { ProductDescription } from '../pages/ProductDescription';
 
 const StyledRouterContainer = styled.div`
   height: 100%;
@@ -38,6 +39,7 @@ export const AppRouter = ({}) => {
         <StyledRouterContainer>
           <Switch>
             <Route exact component={ProductsPage} path='/' />
+            <Route exact component={ProductDescription} path='/:id' />
             <PrivateRouter
               isAuthenticated={isLoggedIn}
               component={Cart}
