@@ -43,6 +43,7 @@ interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
   const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.cart);
   const { name } = useSelector((state) => state.auth);
 
   const handleLogout = () => {
@@ -60,7 +61,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
           </li>
           {name && (
             <li>
-              <Link to='/cart'>Cart</Link>
+              <Link to='/cart'>Cart - {cart.length}</Link>
             </li>
           )}
           {name ? (

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-interface CartProps {}
-
-export const Cart: React.FC<CartProps> = ({}) => {
-  return <div></div>;
+export const Cart: React.FC<{}> = ({}) => {
+  const { cart } = useSelector((state) => state.cart);
+  useEffect(() => {
+    console.log(cart);
+  }, []);
+  return <div>PRobando</div>;
 };

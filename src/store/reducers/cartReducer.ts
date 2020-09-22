@@ -1,12 +1,21 @@
 import { Cart } from '../../pages/Cart';
+import { Product } from '../actions/cart';
 import { ADD_TO_CART } from '../types';
 
-export const cartReducer = (state: any = { cart: [] }, action) => {
+interface cartInterface {
+  cart: Product[];
+}
+
+const cartState: cartInterface = {
+  cart: [],
+};
+
+export const cartReducer = (state = cartState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
       return {
         ...state,
-        cart: state.cart.push(action.payload),
+        cart: state.cart.concat(action.payload),
       };
     default:
       return state;

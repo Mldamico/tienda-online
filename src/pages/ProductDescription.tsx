@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase/firebase-config';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../store/actions/cart';
 
 const ProductDescriptionStyle = styled.div`
   margin: 2rem auto;
@@ -19,6 +21,7 @@ const ProductDescriptionStyle = styled.div`
 
 export const ProductDescription: React.FC<{}> = ({}) => {
   const [product, setProduct]: any = useState({});
+  const dispatch = useDispatch();
   let { articulo } = useParams();
 
   const getProduct = async () => {
@@ -29,7 +32,10 @@ export const ProductDescription: React.FC<{}> = ({}) => {
     setProduct(productSnapshot.docs[0].data());
   };
 
-  const addToCart = () => {};
+  const addCart = () => {
+    console.log(product);
+    dispatch(addToCart(product));
+  };
 
   useEffect(() => {
     getProduct();
@@ -41,7 +47,7 @@ export const ProductDescription: React.FC<{}> = ({}) => {
           {product.titulo} - {product.articulo}
         </p>
         <p>{product.descripcion}</p>
-        <button type='button' onClick={addToCart}>
+        <button type='button' onClick={addCart}>
           Add to Cart
         </button>
       </div>

@@ -39,12 +39,14 @@ export const AppRouter = ({}) => {
         <StyledRouterContainer>
           <Switch>
             <Route exact component={ProductsPage} path='/' />
-            <Route exact component={ProductDescription} path='/:articulo' />
+
             <PrivateRouter
+              exact
               isAuthenticated={isLoggedIn}
               component={Cart}
               path='/cart'
             />
+            <Route exact component={ProductDescription} path='/:articulo' />
             <PublicRouter
               isAuthenticated={isLoggedIn}
               component={Register}
