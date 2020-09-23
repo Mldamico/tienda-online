@@ -9,11 +9,20 @@ const ProductStyle = styled.div`
   flex-direction: column;
   border: 1px solid #000;
   border-radius: 10px;
-
+  align-items: center;
   img {
     width: 400px;
     height: 400px;
     overflow: hidden;
+  }
+  button {
+    padding: 1rem;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    border: 0;
+    color: #fff;
+    background-color: tomato;
+    font-size: 24px;
   }
 `;
 
@@ -37,7 +46,7 @@ export const Product: React.FC<ProductProps> = ({
   const history = useHistory();
   const dispatch = useDispatch();
   const viewDescription = () => {
-    history.push(`/${articulo}`);
+    history.push(`/product/${articulo}`);
   };
 
   const removeProductFromCart = () => {

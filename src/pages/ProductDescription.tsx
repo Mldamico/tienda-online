@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { db } from '../firebase/firebase-config';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/actions/cart';
 
 const ProductDescriptionStyle = styled.div`
@@ -21,6 +21,7 @@ const ProductDescriptionStyle = styled.div`
 
 export const ProductDescription: React.FC<{}> = ({}) => {
   const [product, setProduct]: any = useState({});
+  const { name } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   let { articulo } = useParams();
 
@@ -47,7 +48,7 @@ export const ProductDescription: React.FC<{}> = ({}) => {
           {product.titulo} - {product.articulo}
         </p>
         <p>{product.descripcion}</p>
-        <button type='button' onClick={addCart}>
+        <button type='button' onClick={addCart} disabled={!name}>
           Add to Cart
         </button>
       </div>

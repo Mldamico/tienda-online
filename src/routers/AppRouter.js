@@ -24,29 +24,32 @@ export const AppRouter = ({}) => {
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      dispatch(login(user.uid, user.displayName));
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
       }
     });
-  }, [dispatch, setIsLoggedIn]);
+  }, []);
   return (
     <>
       <Router>
         <Navbar />
         <StyledRouterContainer>
           <Switch>
-            <Route exact component={ProductsPage} path='/' />
-
+            {/* <PublicRouter
+              exact
+              isAuthenticated={isLoggedIn}
+              component={ProductDescription}
+              path='/product/:articulo'
+            />
             <PrivateRouter
               exact
               isAuthenticated={isLoggedIn}
               component={Cart}
               path='/cart'
-            />
-            <Route exact component={ProductDescription} path='/:articulo' />
+            /> */}
+
             <PublicRouter
               isAuthenticated={isLoggedIn}
               component={Register}
@@ -56,6 +59,11 @@ export const AppRouter = ({}) => {
               isAuthenticated={isLoggedIn}
               component={Login}
               path='/login'
+            />
+            <PublicRouter
+              component={ProductsPage}
+              path='/'
+              isAuthenticated={isLoggedIn}
             />
           </Switch>
         </StyledRouterContainer>
