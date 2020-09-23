@@ -28,9 +28,11 @@ export const AppRouter = ({}) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
       }
     });
-  }, []);
+  }, [dispatch, setIsLoggedIn]);
   return (
     <>
       <Router>
