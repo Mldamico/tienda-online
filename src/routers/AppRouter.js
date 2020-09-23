@@ -37,18 +37,18 @@ export const AppRouter = ({}) => {
         <Navbar />
         <StyledRouterContainer>
           <Switch>
-            {/* <PublicRouter
-              exact
+            <Route
               isAuthenticated={isLoggedIn}
               component={ProductDescription}
               path='/product/:articulo'
             />
+            <Route component={ProductsPage} path='/' exact />
             <PrivateRouter
               exact
               isAuthenticated={isLoggedIn}
               component={Cart}
               path='/cart'
-            /> */}
+            />
 
             <PublicRouter
               isAuthenticated={isLoggedIn}
@@ -59,11 +59,6 @@ export const AppRouter = ({}) => {
               isAuthenticated={isLoggedIn}
               component={Login}
               path='/login'
-            />
-            <PublicRouter
-              component={ProductsPage}
-              path='/'
-              isAuthenticated={isLoggedIn}
             />
           </Switch>
         </StyledRouterContainer>
