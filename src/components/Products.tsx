@@ -12,12 +12,11 @@ const ProductStyle = styled.div`
   margin: 2rem 10rem;
 `;
 
-export const Products: React.FC<{}> = ({}) => {
+export const Products: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.products);
   useEffect(() => {
     dispatch(loadProducts());
-    console.log(products);
   }, [dispatch]);
   return (
     <ProductStyle>

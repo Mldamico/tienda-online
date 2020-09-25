@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { startLogout } from '../store/actions/auth';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { startLogout } from '../store/actions/auth';
 const StyledNavbar = styled.div`
   display: flex;
   width: 100%;
@@ -41,7 +41,7 @@ const StyledNavbar = styled.div`
 
 interface NavbarProps {}
 
-export const Navbar: React.FC<NavbarProps> = ({}) => {
+export const Navbar: React.FC<NavbarProps> = () => {
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
   const { name } = useSelector((state) => state.auth);

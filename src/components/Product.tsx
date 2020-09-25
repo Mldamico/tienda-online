@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { removeFromCart } from '../store/actions/cart';
 
 const ProductStyle = styled.div`
@@ -31,7 +31,7 @@ interface ProductProps {
 }
 
 export const Product: React.FC<ProductProps> = ({
-  product: { articulo, titulo, descripcion, imagen },
+  product: { articulo, titulo, descripcion, imagen, precio },
   isCart = false,
 }) => {
   const history = useHistory();
@@ -41,13 +41,13 @@ export const Product: React.FC<ProductProps> = ({
   };
 
   const removeProductFromCart = () => {
-    console.log(articulo);
     dispatch(removeFromCart(articulo));
   };
   return (
     <ProductStyle>
       <p>{titulo}</p>
       <p>{descripcion}</p>
+      <p>${precio}</p>
       <img src={imagen} alt={titulo} />
       {!isCart ? (
         <button type='button' onClick={viewDescription}>

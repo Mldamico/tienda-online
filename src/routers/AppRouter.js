@@ -17,7 +17,7 @@ const StyledRouterContainer = styled.div`
   height: 100%;
 `;
 
-export const AppRouter = ({}) => {
+export const AppRouter = () => {
   const dispatch = useDispatch();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);

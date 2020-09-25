@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Product } from '../components/Product';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { Product } from '../components/Product';
 import { buyCart } from '../store/actions/cart';
 
 const CartStyleGrid = styled.div`
@@ -17,12 +17,9 @@ const CartStyle = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-export const Cart: React.FC<{}> = ({}) => {
+export const Cart: React.FC<{}> = () => {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log(cart);
-  }, []);
 
   const finishCart = () => {
     dispatch(buyCart());

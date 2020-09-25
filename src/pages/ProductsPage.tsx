@@ -1,7 +1,7 @@
 import React from 'react';
 import { Products } from '../components/Products';
 
-export const ProductsPage = ({}) => {
+export const ProductsPage = () => {
   return (
     <div>
       <Products />

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 interface LoginProps {}
 
-export const Login: React.FC<LoginProps> = ({}) => {
+export const Login: React.FC<LoginProps> = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { name } = useSelector((state) => state.auth);

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useForm } from '../hooks/useForm';
 import { startRegisterWithEmailPasswordName } from '../store/actions/auth';
@@ -7,7 +6,7 @@ import StyledForm from '../styles/StyledForm';
 
 interface RegisterProps {}
 
-export const Register: React.FC<RegisterProps> = ({}) => {
+export const Register: React.FC<RegisterProps> = () => {
   const dispatch = useDispatch();
   const [formValues, handleInputChange]: any = useForm({
     name: '',

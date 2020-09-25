@@ -1,4 +1,3 @@
-import { db } from '../../firebase/firebase-config';
 import { ADD_TO_CART, BUY_CART, REMOVE_FROM_CART } from '../types';
 
 export interface Product {
