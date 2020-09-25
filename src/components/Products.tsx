@@ -9,7 +9,7 @@ const ProductStyle = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
   justify-items: center;
-  margin: 1rem;
+  margin: 2rem 10rem;
 `;
 
 export const Products: React.FC<{}> = ({}) => {
@@ -22,14 +22,7 @@ export const Products: React.FC<{}> = ({}) => {
   return (
     <ProductStyle>
       {products.map((product) => (
-        <Product
-          key={product.id}
-          articulo={product.articulo}
-          id={product.id}
-          titulo={product.titulo}
-          imagen={product.imagen}
-          descripcion={product.descripcion}
-        />
+        <Product key={product.id} product={product} />
       ))}
     </ProductStyle>
   );

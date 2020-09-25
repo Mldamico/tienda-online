@@ -1,6 +1,6 @@
 import { Cart } from '../../pages/Cart';
 import { Product } from '../actions/cart';
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../types';
+import { ADD_TO_CART, BUY_CART, REMOVE_FROM_CART } from '../types';
 
 interface cartInterface {
   cart: Product[];
@@ -27,6 +27,11 @@ export const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: newCart,
+      };
+    case BUY_CART:
+      return {
+        ...state,
+        cart: [],
       };
     default:
       return state;

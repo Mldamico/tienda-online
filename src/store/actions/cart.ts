@@ -1,5 +1,5 @@
 import { db } from '../../firebase/firebase-config';
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../types';
+import { ADD_TO_CART, BUY_CART, REMOVE_FROM_CART } from '../types';
 
 export interface Product {
   id: string;
@@ -17,4 +17,8 @@ export const addToCart = (product: Product) => ({
 export const removeFromCart = (articulo: string) => ({
   type: REMOVE_FROM_CART,
   payload: articulo,
+});
+
+export const buyCart = () => ({
+  type: BUY_CART,
 });

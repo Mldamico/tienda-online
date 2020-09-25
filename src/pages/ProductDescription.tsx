@@ -11,6 +11,10 @@ const ProductDescriptionStyle = styled.div`
   display: flex;
   justify-content: center;
 
+  img {
+    height: 400px;
+  }
+
   .description {
     display: flex;
     flex-direction: column;
@@ -48,7 +52,12 @@ export const ProductDescription: React.FC<{}> = ({}) => {
           {product.titulo} - {product.articulo}
         </p>
         <p>{product.descripcion}</p>
-        <button type='button' onClick={addCart} disabled={!name}>
+        <button
+          type='button'
+          onClick={addCart}
+          disabled={!name}
+          className='button'
+        >
           Add to Cart
         </button>
       </div>

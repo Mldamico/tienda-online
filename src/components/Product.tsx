@@ -7,8 +7,7 @@ import { removeFromCart } from '../store/actions/cart';
 const ProductStyle = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid #000;
-  border-radius: 10px;
+
   align-items: center;
   img {
     width: 400px;
@@ -18,29 +17,21 @@ const ProductStyle = styled.div`
   button {
     padding: 1rem;
     width: 100%;
-    border-radius: 0 0 10px 10px;
+    border-radius: ${(props) => (!props.isCart ? '0 0 10px 10px' : '10px')};
     border: 0;
     color: #fff;
-    background-color: tomato;
+    background-color: var(--red);
     font-size: 24px;
   }
 `;
 
 interface ProductProps {
-  id: string;
-  articulo: string;
-  titulo: string;
-  imagen: string;
-  descripcion: string;
+  product: any;
   isCart?: boolean;
 }
 
 export const Product: React.FC<ProductProps> = ({
-  id,
-  articulo,
-  titulo,
-  descripcion,
-  imagen,
+  product: { articulo, titulo, descripcion, imagen },
   isCart = false,
 }) => {
   const history = useHistory();
@@ -63,11 +54,9 @@ export const Product: React.FC<ProductProps> = ({
           Ver descripcion
         </button>
       ) : (
-        <div>
-          <button type='button' onClick={removeProductFromCart}>
-            Remove item
-          </button>
-        </div>
+        <button type='button' onClick={removeProductFromCart}>
+          Remove item
+        </button>
       )}
     </ProductStyle>
   );

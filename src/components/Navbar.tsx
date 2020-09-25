@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const StyledNavbar = styled.div`
   display: flex;
   width: 100%;
-  background-color: tomato;
+  background-color: var(--red);
   height: 5vh;
   align-items: center;
   color: #fff;
@@ -18,7 +18,7 @@ const StyledNavbar = styled.div`
   ul {
     display: flex;
     list-style: none;
-    font-size: 1.1rem;
+    font-size: 1.6rem;
     li {
       padding: 0 1rem;
     }
